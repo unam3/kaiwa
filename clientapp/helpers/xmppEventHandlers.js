@@ -11,12 +11,11 @@ var Contact = require('../models/contact');
 var Resource = require('../models/resource');
 var Message = require('../models/message');
 var Call = require('../models/call');
-
+var StanzaIo = require('stanza.io');
 
 var log = bows('Otalk');
 var ioLogIn = bows('<< in');
 var ioLogOut = bows('>> out');
-
 
 var discoCapsQueue = async.queue(function (pres, cb) {
     var jid = pres.from;
@@ -372,7 +371,7 @@ module.exports = function (client, app) {
     client.on('jingle:incoming', function (session) {
         var contact = me.getContact(session.peer);
         if (!contact) {
-            contact = new Contact({jid: client.JID(session.peer).bare});
+            contact = new Contact({ jid: new StanzaIo.JID(session.peer).bare });
             contact.resources.add({id: session.peer});
             me.contacts.add(contact);
         }

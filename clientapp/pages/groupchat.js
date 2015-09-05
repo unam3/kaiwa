@@ -2,6 +2,7 @@
 "use strict";
 
 var _ = require('underscore');
+var StanzaIo = require('stanza.io');
 var StayDown = require('staydown');
 var BasePage = require('./base');
 var templates = require('../templates');
@@ -301,7 +302,7 @@ module.exports = BasePage.extend({
 
             var id = client.sendMessage(message);
             message.mid = id;
-            message.from = client.JID(this.model.jid.bare + '/' + this.model.nick);
+            message.from = new StanzaIo.JID(this.model.jid.bare + '/' + this.model.nick);
 
             if (this.editMode) {
                 this.model.lastSentMessage.correct(message);

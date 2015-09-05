@@ -2,6 +2,7 @@
 "use strict";
 
 var _ = require('underscore');
+var StanzaIo = require('stanza.io');
 var StayDown = require('staydown');
 var BasePage = require('./base');
 var templates = require('../templates');
@@ -10,7 +11,6 @@ var MessageModel = require('../models/message');
 var embedIt = require('../helpers/embedIt');
 var htmlify = require('../helpers/htmlify');
 var attachMediaStream = require('attachmediastream');
-
 
 module.exports = BasePage.extend({
     template: templates.pages.chat,
@@ -186,7 +186,7 @@ module.exports = BasePage.extend({
 
             message = {
                 id: client.nextId(),
-                to: client.JID(this.model.lockedResource || this.model.jid),
+                to: new StanzaIo.JID(this.model.lockedResource || this.model.jid),
                 type: 'chat',
                 body: val,
                 requestReceipt: true,
@@ -313,12 +313,12 @@ module.exports = BasePage.extend({
                             condition: 'decline'
                         });
                     } else {
-                        client.sendPresence({to: client.JID(self.model.jingleCall.jingleSession.peer) });
+                        client.sendPresence({ to: new StanzaIo.JID(self.model.jingleCall.jingleSession.peer) });
                         self.model.jingleCall.jingleSession.accept();
                     }
                 });
             } else {
-                client.sendPresence({to: client.JID(this.model.jingleCall.jingleSession.peer) });
+                client.sendPresence({ to: new StanzaIo.JID(this.model.jingleCall.jingleSession.peer) });
                 this.model.jingleCall.jingleSession.accept();
             }
         }
