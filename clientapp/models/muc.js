@@ -243,10 +243,10 @@ module.exports = HumanModel.define({
                 }
             }
 
-            client.getHistory(filter, function (err, res) {
+            client.searchHistory(filter, function (err, res) {
                 if (err) return;
 
-                var results = res.mamQuery.results || [];
+                var results = res.mamResult.items || [];
 
                 results.forEach(function (result) {
                     var msg = result.mam.forwarded.message;

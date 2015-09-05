@@ -339,12 +339,12 @@ module.exports = HumanModel.define({
                 }
             }
 
-            client.getHistory(filter, function (err, res) {
+            client.searchHistory(filter, function (err, res) {
                 if (err) return;
 
                 self.lastHistoryFetch = new Date(Date.now() + app.timeInterval);
 
-                var results = res.mamQuery.results || [];
+                var results = res.mamResult.items || [];
                 if (!!onlyLastMessages && !allInterval) results.reverse();
                 results.forEach(function (result) {
                     var msg = result.mam.forwarded.message;
