@@ -10,7 +10,7 @@ Kaiwa is a fork of Otalk, a prototype application created by &yet (https://githu
     git clone https://github.com/digicoop/kaiwa.git
     cd kaiwa
     npm install
-    node server
+    npm start
 
 You will need an XMPP server to use Kaiwa. We provide one at [Kaiwa server](https://github.com/digicoop/kaiwa-server).
 
