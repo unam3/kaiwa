@@ -9,7 +9,6 @@ Kaiwa is a fork of Otalk, a prototype application created by &yet (https://githu
 
     git clone https://github.com/digicoop/kaiwa.git
     cd kaiwa
-    sudo apt-get install libldap2-dev uuid-dev
     npm install
     node server
 
