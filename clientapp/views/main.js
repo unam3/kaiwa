@@ -2,6 +2,7 @@
 "use strict";
 
 var HumanView = require('human-view');
+var StanzaIo = require('stanza.io');
 var templates = require('../templates');
 var ContactListItem = require('../views/contactListItem');
 var MUCListItem = require('../views/mucListItem');
@@ -132,7 +133,7 @@ module.exports = HumanView.extend({
         me.mucs.add({
             id: mucjid,
             name: mucjid,
-            jid: new client.JID(mucjid),
+            jid: new StanzaIo.JID(mucjid),
             nick: me.nick,
             autoJoin: true
         });

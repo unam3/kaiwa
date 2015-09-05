@@ -11,6 +11,7 @@ var MUC = require('./muc');
 var ContactRequests = require('./contactRequests');
 var avatarHandler = require('../helpers/avatarHandler');
 var crypto = require('crypto');
+var StanzaIo = require('stanza.io');
 
 module.exports = HumanModel.define({
     initialize: function (opts) {
@@ -143,9 +144,9 @@ module.exports = HumanModel.define({
     getContact: function (jid, alt) {
         if (typeof jid === 'string') {
             if (SERVER_CONFIG.domain && jid.indexOf('@') == -1) jid += '@' + SERVER_CONFIG.domain;
-            jid = new client.JID(jid);
+            jid = new StanzaIo.JID(jid);
         }
-        if (typeof alt === 'string') alt = new client.JID(alt);
+        if (typeof alt === 'string') alt = new StanzaIo.JID(alt);
 
         if (this.isMe(jid)) {
             jid = alt || jid;
