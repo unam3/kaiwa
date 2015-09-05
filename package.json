@@ -36,9 +36,6 @@
     "underscore": "1.6.0",
     "wildemitter": "^1.0.1"
   },
-  "devDependencies": {
-    "precommit-hook": "^1.0.2"
-  },
   "license": "MIT",
   "main": "server.js",
   "private": true,
