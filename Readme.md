@@ -7,14 +7,22 @@ Kaiwa is a fork of Otalk, a prototype application created by &yet (https://githu
 
 ## Installing
 
-    git clone https://github.com/digicoop/kaiwa.git
-    cd kaiwa
-    npm install
-    npm start
+    $ git clone https://github.com/ForNeVeR/kaiwa.git
+    $ cd kaiwa
+    $ cp dev_config.example.json dev_config.json # and edit the file
+    $ npm install
+    $ npm start
 
-You will need an XMPP server to use Kaiwa. We provide one at [Kaiwa server](https://github.com/digicoop/kaiwa-server).
+You will need an XMPP server to use Kaiwa. We provide one at
+[Kaiwa server][kaiwa-server].
 
-*Note:* If you're running your own XMPP server, and aren't using something like HAProxy to terminate SSL, then you might get errors in certain browsers trying to establish a WebSocket connection because the XMPP server is requesting an optional client certificate which makes the browser terminate the socket. To resolve that, visit the XMPP over Websocket URL directly (eg, example.com:5281/xmpp-websocket for Prosody) so that a client cert choice can be made. After that, the Kaiwa client should connect fine.
+*Note:* If you're running your own XMPP server, and aren't using something like
+HAProxy to terminate SSL, then you might get errors in certain browsers trying
+to establish a WebSocket connection because the XMPP server is requesting an
+optional client certificate which makes the browser terminate the socket. To
+resolve that, visit the XMPP over Websocket URL directly (eg,
+`example.com:5281/xmpp-websocket` for Prosody) so that a client cert choice can
+be made. After that, the Kaiwa client should connect fine.
 
 ## What's included?
 
@@ -39,3 +47,5 @@ Made a typo in a message? Using Message Correction [XEP-0308](http://xmpp.org/ex
 ### Timezone Indications
 
 Working with someone in a different timezone? If the other person is using Kaiwa or another client that supports Entity Time ([XEP-0202](http://xmpp.org/extensions/xep-0202.html)) you'll see a reminder that they're 9 hours away where it's 4am and they're not likely to respond.
+
+[kaiwa-server]: https://github.com/digicoop/kaiwa-server
