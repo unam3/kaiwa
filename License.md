@@ -1,7 +1,8 @@
-The MIT License (MIT)
-
-Copyright (c) 2015 Digicoop
-Copyright (c) 2013 &yet, LLC
+The MIT License
+===============
+Copyright (C) 2015 Friedrich von Never
+Copyright (C) 2015 Digicoop
+Copyright (C) 2013 &yet, LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
