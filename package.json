@@ -32,7 +32,7 @@
     "sound-effect-manager": "1.0.0",
     "stanza.io": "6.10.2",
     "staydown": "1.0.3",
-    "templatizer": "0.1.2",
+    "templatizer": "^2.0.2",
     "underscore": "1.6.0",
     "wildemitter": "^1.0.1"
   },
