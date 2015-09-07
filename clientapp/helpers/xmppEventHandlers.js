@@ -134,9 +134,10 @@ module.exports = function (client, app) {
             me.mucs.init();
         });
 
-        var keepalive;
-        keepalive = JSON.parse(localStorage.keepalive || '{}');
-        client.enableKeepAlive(keepalive);
+        var keepalive = SERVER_CONFIG.keepalive;
+        if (keepalive) {
+            client.enableKeepAlive(keepalive);
+        }
     });
 
     client.on('roster:update', function (iq) {

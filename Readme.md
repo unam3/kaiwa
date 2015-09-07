@@ -24,6 +24,14 @@ resolve that, visit the XMPP over Websocket URL directly (eg,
 `example.com:5281/xmpp-websocket` for Prosody) so that a client cert choice can
 be made. After that, the Kaiwa client should connect fine.
 
+## Configuring
+
+Application configuration is taken from `dev_config.json` file. You may enable
+XMPP pings by setting the `server.keepalive.interval` (time between ping
+attempts) and `server.keepalive.timeout` (timeout to close the connection if
+pong was not received); both of these are in seconds. If `server.keepalive` is
+not defined, then XMPP ping will be disabled.
+
 ## What's included?
 
 Kaiwa comes with support for:

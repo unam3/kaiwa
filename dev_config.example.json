@@ -15,6 +15,10 @@
         "wss": "wss://example.com:5281/xmpp-websocket/",
         "muc": "chat.example.com",
         "startup": "groupchat/room%40chat.example.com",
-        "admin": "admin"
+        "admin": "admin",
+        "keepalive": {
+            "interval": 45,
+            "timeout": 15
+        }
     }
 }
