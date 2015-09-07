@@ -1,5 +1,5 @@
-# Kaiwa
-
+Kaiwa [![Build Status](https://travis-ci.org/ForNeVeR/kaiwa.svg?branch=develop)](https://travis-ci.org/ForNeVeR/kaiwa)
+=====
 Kaiwa is an open source web client for XMPP.  
 Kaiwa is a fork of Otalk, a prototype application created by &yet (https://github.com/otalk for more code).
 
