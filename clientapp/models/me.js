@@ -135,9 +135,6 @@ module.exports = HumanModel.define({
             });
         });
     },
-    hasLdapUsers: function () {
-        return app.ldapUsers.length > 0 ? 'hasLdapUsers' : '';
-    },
     setSoundNotification: function(enable) {
         this.soundEnabled = enable;
     },
