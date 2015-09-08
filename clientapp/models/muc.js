@@ -249,13 +249,13 @@ module.exports = HumanModel.define({
                 var results = res.mamResult.items || [];
 
                 results.forEach(function (result) {
-                    var msg = result.mam.forwarded.message;
+                    var msg = result.forwarded.message;
 
                     msg.mid = msg.id;
                     delete msg.id;
 
                     if (!msg.delay) {
-                        msg.delay = result.mam.forwarded.delay;
+                        msg.delay = result.forwarded.delay;
                     }
 
                     if (msg.replace) {
@@ -267,7 +267,7 @@ module.exports = HumanModel.define({
                     }
 
                     var message = new Message(msg);
-                    message.archivedId = result.mam.id;
+                    message.archivedId = result.id;
                     message.acked = true;
 
                     self.addMessage(message, false);
