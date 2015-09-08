@@ -50,14 +50,6 @@ app.get('/sounds/*', function (req, res) {
     res.redirect("./public" + req.baseUrl);
 });
 
-app.get('/oauth/login', function (req, res) {
-    res.redirect('https://apps.andyet.com/oauth/authorize?client_id=' + config.andyetAuth.id + '&response_type=token');
-});
-
-app.get('/oauth/callback', function (req, res) {
-    res.render('oauthLogin');
-});
-
 app.get('/manifest.webapp', function (req, res, next) {
     res.set('Content-Type', 'application/x-web-app-manifest+json');
     res.send(webappManifest);
