@@ -1,2 +1,6 @@
 /node_modules/
+
+/src/js/templates.js
+/public/
+
 /dev_config.json
