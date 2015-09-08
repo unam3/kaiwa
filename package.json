@@ -49,9 +49,12 @@
   "devDependencies": {
     "browserify": "^4.2.3",
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
     "gulp-concat-css": "^2.2.0",
     "gulp-jade": "^1.1.0",
     "gulp-minify-css": "^1.2.1",
-    "gulp-typescript": "^2.8.2"
+    "merge-stream": "^1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
   }
 }
