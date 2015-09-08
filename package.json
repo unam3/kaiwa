@@ -6,7 +6,8 @@
     "crypto": "crypto-browserify"
   },
   "scripts": {
-    "compile": "gulp compile"
+    "compile": "gulp compile",
+    "start": "node src/server.js"
   },
   "dependencies": {
     "andlog": "0.0.4",
@@ -48,7 +49,9 @@
   "devDependencies": {
     "browserify": "^4.2.3",
     "gulp": "^3.9.0",
+    "gulp-concat-css": "^2.2.0",
     "gulp-jade": "^1.1.0",
+    "gulp-minify-css": "^1.2.1",
     "gulp-typescript": "^2.8.2"
   }
 }

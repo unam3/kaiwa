@@ -1807,14 +1807,11 @@ button.secondary:hover:not(:disabled) {
 #calls button {
   min-width: auto;
   background-color: rgba(255,255,255,0.3);
-rgba(0,0,0,0.1)
   width: 100px;
   margin-right: 10px;
   font-size: 17px;
   color: rgba(0,0,0,0.75);
-rgba(255,255,255,0.5)
   float: left;
-rgba(0,0,0,0.3)
 }
 #calls button border:top: 1px solid rgba(255,
 #calls button 255,
@@ -1827,7 +1824,6 @@ rgba(0,0,0,0.3)
   background-color: rgba(255,255,255,0.4);
 }
 #calls button:active {
-rgba(0,0,0,0.2)
   padding-top: 11px;
   padding-bottom: 9px;
 }
@@ -1852,7 +1848,6 @@ rgba(0,0,0,0.2)
 #calls .callTime {
   font-weight: 700;
   color: #fff;
-rgba(0,0,0,0.7)
   line-height: 1;
   font-size: 16px;
 }
