@@ -9,7 +9,6 @@ var StanzaIO = require('stanza.io');
 
 var AppState = require('./models/state');
 var MeModel = require('./models/me');
-var LdapUsers = require('./models/ldapUsers');
 var MainView = require('./views/main');
 var Router = require('./router');
 var Storage = require('./storage');
@@ -125,8 +124,6 @@ module.exports = {
                     el: document.body
                 });
                 self.view.render();
-
-                app.ldapUsers = new LdapUsers();
 
                 if (me.contacts.length) {
                     start();

@@ -16,7 +16,7 @@ templatizer["head"] = function tmpl_head() {
     return '<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/><meta name="apple-mobile-web-app-capable" content="yes"/><link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:400,700"/><link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>';
 };
 
-// includes\bareMessage.jade compiled template
+// includes/bareMessage.jade compiled template
 templatizer["includes"]["bareMessage"] = function tmpl_includes_bareMessage(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -59,12 +59,12 @@ templatizer["includes"]["bareMessage"] = function tmpl_includes_bareMessage(loca
     return buf.join("");
 };
 
-// includes\call.jade compiled template
+// includes/call.jade compiled template
 templatizer["includes"]["call"] = function tmpl_includes_call() {
     return '<div class="call"><img class="callerAvatar"/><h1 class="caller"><span class="callerName"></span><span class="callerNumber"></span></h1><h2 class="callTime"></h2><div class="callActions"><button class="answer">Answer</button><button class="ignore">Ignore</button><button class="cancel">Cancel</button><button class="end">End</button><button class="mute">Mute</button><button class="unmute">Unmute</button></div></div>';
 };
 
-// includes\contactListItem.jade compiled template
+// includes/contactListItem.jade compiled template
 templatizer["includes"]["contactListItem"] = function tmpl_includes_contactListItem(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -76,19 +76,12 @@ templatizer["includes"]["contactListItem"] = function tmpl_includes_contactListI
     return buf.join("");
 };
 
-// includes\contactListItemResource.jade compiled template
-templatizer["includes"]["contactListItemResource"] = function tmpl_includes_contactListItemResource(locals) {
-    var buf = [];
-    var jade_mixins = {};
-    var jade_interp;
-    var locals_for_with = locals || {};
-    (function(resource) {
-        buf.push('<li><p class="jid">' + jade.escape(null == (jade_interp = resource.jid) ? "" : jade_interp) + '</p><p class="status">' + jade.escape(null == (jade_interp = resource.status) ? "" : jade_interp) + "</p></li>");
-    }).call(this, "resource" in locals_for_with ? locals_for_with.resource : typeof resource !== "undefined" ? resource : undefined);
-    return buf.join("");
+// includes/contactRequest.jade compiled template
+templatizer["includes"]["contactRequest"] = function tmpl_includes_contactRequest() {
+    return '<li><div class="jid"></div><div class="response"><button class="primary small approve">Approve</button><button class="secondary small deny">Deny</button></div></li>';
 };
 
-// includes\dayDivider.jade compiled template
+// includes/dayDivider.jade compiled template
 templatizer["includes"]["dayDivider"] = function tmpl_includes_dayDivider(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -100,12 +93,19 @@ templatizer["includes"]["dayDivider"] = function tmpl_includes_dayDivider(locals
     return buf.join("");
 };
 
-// includes\contactRequest.jade compiled template
-templatizer["includes"]["contactRequest"] = function tmpl_includes_contactRequest() {
-    return '<li><div class="jid"></div><div class="response"><button class="primary small approve">Approve</button><button class="secondary small deny">Deny</button></div></li>';
+// includes/contactListItemResource.jade compiled template
+templatizer["includes"]["contactListItemResource"] = function tmpl_includes_contactListItemResource(locals) {
+    var buf = [];
+    var jade_mixins = {};
+    var jade_interp;
+    var locals_for_with = locals || {};
+    (function(resource) {
+        buf.push('<li><p class="jid">' + jade.escape(null == (jade_interp = resource.jid) ? "" : jade_interp) + '</p><p class="status">' + jade.escape(null == (jade_interp = resource.status) ? "" : jade_interp) + "</p></li>");
+    }).call(this, "resource" in locals_for_with ? locals_for_with.resource : typeof resource !== "undefined" ? resource : undefined);
+    return buf.join("");
 };
 
-// includes\embeds.jade compiled template
+// includes/embeds.jade compiled template
 templatizer["includes"]["embeds"] = function tmpl_includes_embeds(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -140,7 +140,7 @@ templatizer["includes"]["embeds"] = function tmpl_includes_embeds(locals) {
     return buf.join("");
 };
 
-// includes\message.jade compiled template
+// includes/message.jade compiled template
 templatizer["includes"]["message"] = function tmpl_includes_message(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -152,17 +152,12 @@ templatizer["includes"]["message"] = function tmpl_includes_message(locals) {
     return buf.join("");
 };
 
-// includes\ldapUserItem.jade compiled template
-templatizer["includes"]["ldapUserItem"] = function tmpl_includes_ldapUserItem() {
-    return '<li class="ldapUser"><span class="name"></span><span class="delete fa fa-trash"></span><span class="fa fa-plus"></span><div class="wrap"><span class="inputLabel">Display Name</span><input type="text" class="displayName"/><span class="inputLabel">First Name</span><input type="text" class="givenName"/><span class="inputLabel">Last Name</span><input type="text" class="sn"/><span class="inputLabel">Email</span><input type="text" class="mail"/><button class="primary small changePassword">Change Password</button></div></li>';
-};
-
-// includes\messageGroup.jade compiled template
+// includes/messageGroup.jade compiled template
 templatizer["includes"]["messageGroup"] = function tmpl_includes_messageGroup() {
     return "<li></li>";
 };
 
-// includes\mucListItem.jade compiled template
+// includes/mucListItem.jade compiled template
 templatizer["includes"]["mucListItem"] = function tmpl_includes_mucListItem(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -174,7 +169,7 @@ templatizer["includes"]["mucListItem"] = function tmpl_includes_mucListItem(loca
     return buf.join("");
 };
 
-// includes\mucBareMessage.jade compiled template
+// includes/mucBareMessage.jade compiled template
 templatizer["includes"]["mucBareMessage"] = function tmpl_includes_mucBareMessage(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -217,7 +212,12 @@ templatizer["includes"]["mucBareMessage"] = function tmpl_includes_mucBareMessag
     return buf.join("");
 };
 
-// includes\mucWrappedMessage.jade compiled template
+// includes/mucRosterItem.jade compiled template
+templatizer["includes"]["mucRosterItem"] = function tmpl_includes_mucRosterItem() {
+    return '<li class="online"><div class="name"></div></li>';
+};
+
+// includes/mucWrappedMessage.jade compiled template
 templatizer["includes"]["mucWrappedMessage"] = function tmpl_includes_mucWrappedMessage(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -261,12 +261,7 @@ templatizer["includes"]["mucWrappedMessage"] = function tmpl_includes_mucWrapped
     return buf.join("");
 };
 
-// includes\mucRosterItem.jade compiled template
-templatizer["includes"]["mucRosterItem"] = function tmpl_includes_mucRosterItem() {
-    return '<li class="online"><div class="name"></div></li>';
-};
-
-// includes\wrappedMessage.jade compiled template
+// includes/wrappedMessage.jade compiled template
 templatizer["includes"]["wrappedMessage"] = function tmpl_includes_wrappedMessage(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -310,7 +305,7 @@ templatizer["includes"]["wrappedMessage"] = function tmpl_includes_wrappedMessag
     return buf.join("");
 };
 
-// misc\growlMessage.jade compiled template
+// misc/growlMessage.jade compiled template
 templatizer["misc"]["growlMessage"] = function tmpl_misc_growlMessage(locals) {
     var buf = [];
     var jade_mixins = {};
@@ -332,24 +327,24 @@ templatizer["misc"]["growlMessage"] = function tmpl_misc_growlMessage(locals) {
     return buf.join("");
 };
 
-// pages\chat.jade compiled template
+// pages/chat.jade compiled template
 templatizer["pages"]["chat"] = function tmpl_pages_chat() {
     return '<section class="page chat"><section class="conversation"><header><div class="title"><span class="name"></span><i class="user_presence fa fa-circle"></i><span class="status"></span></div><div class="tzo"></div></header><ul class="messages scroll-container"></ul><div class="activeCall"><div class="container"><video autoplay="autoplay" class="remote"></video><video autoplay="autoplay" muted="muted" class="local"></video><aside class="button-wrap"><button class="accept primary">Accept</button><button class="end secondary">End</button><div class="button-group outlined"><button class="mute">Mute</button><button class="unmute">Unmute</button></div></aside></div></div><div class="chatBox"><div class="contactState"></div><form class="formwrap"><textarea name="chatInput" type="text" placeholder="Send a message..." autocomplete="off"></textarea></form><button class="primary small call">Call</button></div></section></section>';
 };
 
-// pages\groupchat.jade compiled template
+// pages/groupchat.jade compiled template
 templatizer["pages"]["groupchat"] = function tmpl_pages_groupchat() {
     return '<section class="page chat"><section class="group conversation"><header class="online"><div class="title"><span class="name"></span><i class="channel_actions fa fa-comments-o"></i><span contenteditable="true" spellcheck="false" class="status"></span></div></header><ul class="messages"></ul><a id="members_toggle"><i class="fa fa-user"></i><span id="members_toggle_count"></span></a><ul class="groupRoster"></ul><div class="chatBox"><ul class="autoComplete"></ul><form class="formwrap"><textarea name="chatInput" type="text" placeholder="Send a message..." autocomplete="off"></textarea></form></div></section></section>';
 };
 
-// pages\settings.jade compiled template
-templatizer["pages"]["settings"] = function tmpl_pages_settings() {
-    return '<section class="page main"><h1 id="title">Settings</h1><div id="avatarChanger"><h4>Change Avatar</h4><div class="uploadRegion"><p>Drag and drop a new avatar here</p><img/><form><input id="uploader" type="file"/></form></div></div><div><h4>Desktop Integration</h4><button class="enableAlerts">Enable alerts</button><button class="primary installFirefox">Install app</button><button class="soundNotifs">sound notifications</button></div><div id="ldapSettings"><h4>LDAP settings</h4><ul id="ldapUsers"></ul><input type="text" placeholder="add a ldap user" id="newLdapUser"/></div><div><button class="disconnect">Disconnect</button><button class="primary logout">Logout</button></div></section>';
-};
-
-// pages\signin.jade compiled template
+// pages/signin.jade compiled template
 templatizer["pages"]["signin"] = function tmpl_pages_signin() {
     return '<section class="page signin"><div id="loginForm"><form><label>JID:<input type="text" id="jid" placeholder="you@aweso.me"/></label><label>Password:<input type="password" id="password"/></label><label>WebSocket URL:<input type="text" id="wsURL" placeholder="wss://aweso.me:5281/xmpp-websocket"/></label><input type="submit" value="Connect" class="button primary"/></form></div></section>';
+};
+
+// pages/settings.jade compiled template
+templatizer["pages"]["settings"] = function tmpl_pages_settings() {
+    return '<section class="page main"><h1 id="title">Settings</h1><div id="avatarChanger"><h4>Change Avatar</h4><div class="uploadRegion"><p>Drag and drop a new avatar here</p><img/><form><input id="uploader" type="file"/></form></div></div><div><h4>Desktop Integration</h4><button class="enableAlerts">Enable alerts</button><button class="primary installFirefox">Install app</button><button class="soundNotifs">sound notifications</button></div><div><button class="disconnect">Disconnect</button><button class="primary logout">Logout</button></div></section>';
 };
 
 
