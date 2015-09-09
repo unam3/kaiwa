@@ -95,10 +95,8 @@ gulp.task('jade-templates', function (cb) {
 
 gulp.task('jade-views', ['jade-views-login', 'css'], function () {
     return gulp.src([
-        './src/jade/views/error.jade',
-        './src/jade/views/index.jade',
-        './src/jade/views/logout.jade',
-        './src/jade/views/oauthLogin.jade'
+        './src/jade/views/*',
+        '!./src/jade/views/login.jade'
     ]).pipe(jade()).pipe(gulp.dest('./public/'));
 });
 
