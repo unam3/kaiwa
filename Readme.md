@@ -7,15 +7,32 @@ Kaiwa is a fork of Otalk, a prototype application created by &yet (https://githu
 
 ## Installing
 
+First of all, clone the repository, install the dependencies and configure the
+application:
+
     $ git clone https://github.com/ForNeVeR/kaiwa.git
     $ cd kaiwa
     $ npm install
     $ cp dev_config.example.json dev_config.json # and edit the file
+
+After that compile the application:
+
     $ npm run compile
+
+And start the server:
+
     $ npm start
 
-You will need an XMPP server to use Kaiwa. We provide one at
-[Kaiwa server][kaiwa-server].
+For the development purposes you may use
+
+    $ npm run devel-nix # or devel-win for Windows environment
+
+It will continously monitor the `src` directory for changes and recompile
+application on any change.
+
+It you want to publish the compiled application somewhere else, feel free to
+drop the `public` directory to any web server. You could need to setup MIME
+types, please consult `src/server.js` if you need to.
 
 *Note:* If you're running your own XMPP server, and aren't using something like
 HAProxy to terminate SSL, then you might get errors in certain browsers trying
@@ -56,5 +73,3 @@ Made a typo in a message? Using Message Correction [XEP-0308](http://xmpp.org/ex
 ### Timezone Indications
 
 Working with someone in a different timezone? If the other person is using Kaiwa or another client that supports Entity Time ([XEP-0202](http://xmpp.org/extensions/xep-0202.html)) you'll see a reminder that they're 9 hours away where it's 4am and they're not likely to respond.
-
-[kaiwa-server]: https://github.com/digicoop/kaiwa-server

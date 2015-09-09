@@ -1,3 +1,4 @@
+var batch = require('gulp-batch');
 var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var concat = require('gulp-concat');
@@ -9,6 +10,7 @@ var merge = require('merge-stream');
 var mkdirp = require('mkdirp');
 var source = require('vinyl-source-stream');
 var templatizer = require('templatizer');
+var watch = require('gulp-watch');
 
 gulp.task('compile', ['resources', 'client', 'config', 'manifest']);
 
@@ -17,12 +19,12 @@ gulp.task('resources', function () {
         .pipe(gulp.dest('./public'));
 });
 
-gulp.task('client', ['jade-templates', 'jade-views'], function () {
+gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
     var stream = browserify({
         entries: [ './src/js/app.js' ]
-    }).bundle();
+    }).bundle().on('error', cb);
 
-    return merge(gulp.src([
+    merge(gulp.src([
             './src/js/libraries/jquery.js',
             './src/js/libraries/ui.js',
             './src/js/libraries/resampler.js',
@@ -32,7 +34,8 @@ gulp.task('client', ['jade-templates', 'jade-views'], function () {
             './src/js/libraries/jquery-impromptu.js'
         ]), stream.pipe(source('app.js')).pipe(buffer()))
         .pipe(concat('app.js'))
-        .pipe(gulp.dest('./public/js'));
+        .pipe(gulp.dest('./public/js'))
+        .on('end', cb);
 });
 
 gulp.task('config', function (cb) {
@@ -102,4 +105,15 @@ gulp.task('css', function () {
     return gulp.src('./src/css/*.css')
         .pipe(concatCss('app.css'))
         .pipe(gulp.dest('./public/css/'));
+});
+
+gulp.task('watch', function () {
+    watch([
+        './src/**',
+        '!./src/js/templates.js',
+        './dev_config.json'
+    ], batch(function (events, done) {
+        console.log('==> Recompiling Kaiwa');
+        gulp.start('compile', done);
+    }));
 });
