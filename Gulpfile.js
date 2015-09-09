@@ -9,10 +9,22 @@ var jade = require('gulp-jade');
 var merge = require('merge-stream');
 var mkdirp = require('mkdirp');
 var source = require('vinyl-source-stream');
+var stylus = require('gulp-stylus');
 var templatizer = require('templatizer');
 var watch = require('gulp-watch');
 
 gulp.task('compile', ['resources', 'client', 'config', 'manifest']);
+
+gulp.task('watch', function () {
+    watch([
+        './src/**',
+        '!./src/js/templates.js',
+        './dev_config.json'
+    ], batch(function (events, done) {
+        console.log('==> Recompiling Kaiwa');
+        gulp.start('compile', done);
+    }));
+});
 
 gulp.task('resources', function () {
     return gulp.src('./src/resources/**')
@@ -101,19 +113,17 @@ gulp.task('jade-views-login', ['css'], function () {
         .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('css', function () {
-    return gulp.src('./src/css/*.css')
+gulp.task('css', ['stylus'], function () {
+    return gulp.src([
+            './build/css/*.css',
+            './src/css/*.css'
+        ])
         .pipe(concatCss('app.css'))
         .pipe(gulp.dest('./public/css/'));
 });
 
-gulp.task('watch', function () {
-    watch([
-        './src/**',
-        '!./src/js/templates.js',
-        './dev_config.json'
-    ], batch(function (events, done) {
-        console.log('==> Recompiling Kaiwa');
-        gulp.start('compile', done);
-    }));
+gulp.task('stylus', function () {
+    return gulp.src('./src/stylus/client.styl')
+        .pipe(stylus())
+        .pipe(gulp.dest('./build/css'));
 });
