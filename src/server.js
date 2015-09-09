@@ -25,11 +25,6 @@ app.use(helmet.contentTypeOptions());
 
 var webappManifest = fs.readFileSync('./public/x-manifest.webapp');
 
-app.get('/config.js', function (req, res) {
-    res.type('application/javascript');
-    res.send("var SERVER_CONFIG = " + JSON.stringify(config.server) + ";");
-});
-
 app.get('/manifest.webapp', function (req, res, next) {
     res.set('Content-Type', 'application/x-web-app-manifest+json');
     res.send(webappManifest);
@@ -54,7 +49,7 @@ app.use(function handleError(err, req, res, next) {
     res.render('error', errorResult);
 });
 
-// TODO: Setup config and manifest building.
+// TODO: Setup manifest building.
 // var clientApp = new Moonboots({
 //     moonboots: {
 //         main: __dirname + '/clientapp/app.js',

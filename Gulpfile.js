@@ -2,14 +2,14 @@ var browserify = require('browserify');
 var buffer = require('vinyl-buffer');
 var concat = require('gulp-concat');
 var concatCss = require('gulp-concat-css');
-var config = require('./dev_config');
-var jade = require('gulp-jade');
+var fs = require('fs');
 var gulp = require('gulp');
+var jade = require('gulp-jade');
 var merge = require('merge-stream');
 var source = require('vinyl-source-stream');
 var templatizer = require('templatizer');
 
-gulp.task('compile', ['resources', 'client']);
+gulp.task('compile', ['resources', 'client', 'config']);
 gulp.task('resources', function () {
     return gulp.src('./src/resources/**')
         .pipe(gulp.dest('./public'));
@@ -31,6 +31,15 @@ gulp.task('client', ['jade-templates', 'jade-views'], function () {
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js'));
 });
+gulp.task('config', function (cb) {
+    var config = require('./dev_config');
+    fs.writeFile(
+        './public/config.js',
+        'var SERVER_CONFIG = ' + JSON.stringify(config.server) + ';',
+        function (error) {
+            cb(error);
+        });
+});
 gulp.task('jade-templates', function (cb) {
     templatizer('./src/jade/templates', './src/js/templates.js', cb);
 });
@@ -43,6 +52,7 @@ gulp.task('jade-views', ['jade-views-login', 'css'], function () {
     ]).pipe(jade()).pipe(gulp.dest('./public/'));
 });
 gulp.task('jade-views-login', ['css'], function () {
+    var config = require('./dev_config');
     return gulp.src('./src/jade/views/login.jade')
         .pipe(jade({
             locals: {
