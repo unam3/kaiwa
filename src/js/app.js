@@ -28,7 +28,7 @@ module.exports = {
 
         if (!config) {
             console.log('missing config');
-            window.location = '/login';
+            window.location = '/login.html';
             return;
         }
 

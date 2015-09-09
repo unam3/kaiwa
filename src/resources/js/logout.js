@@ -1,4 +1,4 @@
 $(function () {
     localStorage.clear();
-    window.location = '/login';
+    window.location = '/login.html';
 });

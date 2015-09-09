@@ -91,13 +91,13 @@ module.exports = function (client, app) {
             console.error(err);
         }
         if (!app.state.hasConnected) {
-            window.location = '/login';
+            window.location = '/login.html';
         }
     });
 
     client.on('auth:failed', function () {
         log.warn('auth failed');
-        window.location = '/login';
+        window.location = '/login.html';
     });
 
     client.on('stream:management:resumed', function () {

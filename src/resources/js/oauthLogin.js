@@ -24,7 +24,7 @@ parts.forEach(function (value) {
                 window.location = '/';
             },
             error: function () {
-                window.location = '/logout';
+                window.location = '/logout.html';
             }
         });
     }
