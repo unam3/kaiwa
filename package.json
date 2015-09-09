@@ -20,14 +20,12 @@
     "compression": "1.2.2",
     "crypto-browserify": "",
     "express": "4.10.6",
-    "getconfig": "0.0.5",
     "getusermedia": "0.2.1",
     "helmet": "0.1.0",
     "human-model": "2.6.0",
     "human-view": "1.8.0",
     "jade": "1.8.2",
     "jxt": "^2.7.0",
-    "moonboots-express": "2.x",
     "node-uuid": "^1.4.1",
     "notify.js": "0.0.3",
     "semi-static": "0.0.4",
@@ -54,6 +52,7 @@
     "gulp-jade": "^1.1.0",
     "gulp-minify-css": "^1.2.1",
     "merge-stream": "^1.0.0",
+    "mkdirp": "^0.5.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }

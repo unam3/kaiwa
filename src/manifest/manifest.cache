@@ -2,8 +2,8 @@ CACHE MANIFEST
 # #{version}
 
 CACHE:
-/#{jsFileName}
-/#{cssFileName}
+/js/app.js
+/css/app.css
 
 /images/logo.png
 /images/icon_128x128.png
@@ -16,4 +16,3 @@ NETWORK:
 *
 
 FALLBACK:
-
