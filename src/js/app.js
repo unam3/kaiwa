@@ -22,6 +22,26 @@ var SoundEffectManager = require('sound-effect-manager');
 
 module.exports = {
     launch: function () {
+        function parseConfig(json) {
+            var config = JSON.parse(json);
+            var credentials = config.credentials;
+            if (!credentials) {
+                return config;
+            }
+
+            for (var property in credentials) {
+                if (!credentials.hasOwnProperty(property)) {
+                    continue;
+                }
+
+                var value = credentials[property];
+                if (value.type === 'Buffer') {
+                    credentials[property] = new Buffer(value);
+                }
+            }
+
+            return config;
+        }
 
         var self = window.app = this;
         var config = localStorage.config;
@@ -32,7 +52,7 @@ module.exports = {
             return;
         }
 
-        app.config = JSON.parse(config);
+        app.config = parseConfig(config);
         app.config.useStreamManagement = true;
 
         _.extend(this, Backbone.Events);
