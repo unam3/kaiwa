@@ -32,6 +32,8 @@ module.exports.fetch = function (jid, id, type, source, cb) {
                         return cb(getGravatar(jid));
                     }
 
+		    if (!resp.vCardTemp.photo) return;
+
                     type = resp.vCardTemp.photo.type || type;
 
                     var data = resp.vCardTemp.photo.data;
