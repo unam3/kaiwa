@@ -102,7 +102,7 @@ module.exports = HumanView.extend({
         }
     },
     handleLogout: function (e) {
-        app.navigate('/logout.html');
+        app.navigate('/logout');
     },
     handleAddContact: function (e) {
         e.preventDefault();
