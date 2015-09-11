@@ -33,7 +33,6 @@
     "semi-static": "0.0.4",
     "serve-static": "1.7.1",
     "sound-effect-manager": "1.0.0",
-    "stanza.io": "^7.3.2",
     "staydown": "1.0.3",
     "templatizer": "^2.0.2",
     "underscore": "1.6.0",
@@ -58,6 +57,7 @@
     "gulp-watch": "^4.3.5",
     "merge-stream": "^1.0.0",
     "mkdirp": "^0.5.1",
+    "stanza.io": "^7.3.3",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
