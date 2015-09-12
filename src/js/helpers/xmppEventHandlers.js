@@ -131,7 +131,7 @@ module.exports = function (client, app) {
                 client.enableCarbons();
             });
 
-            me.mucs.init();
+            me.mucs.fetch();
         });
 
         var keepalive = SERVER_CONFIG.keepalive;
