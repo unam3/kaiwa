@@ -42,13 +42,20 @@ resolve that, visit the XMPP over Websocket URL directly (eg,
 `example.com:5281/xmpp-websocket` for Prosody) so that a client cert choice can
 be made. After that, the Kaiwa client should connect fine.
 
-## Configuring
+## Configuration
 
-Application configuration is taken from `dev_config.json` file. You may enable
-XMPP pings by setting the `server.keepalive.interval` (time between ping
-attempts) and `server.keepalive.timeout` (timeout to close the connection if
-pong was not received); both of these are in seconds. If `server.keepalive` is
-not defined, then XMPP ping will be disabled.
+Application configuration is taken from `dev_config.json` file.
+
+`server.sasl` is optional parameter that can be used to configure the
+authentication scheme. It can be a single string or a priority list. The default
+priorities as defined by [stanza.io][] are `['external', 'scram-sha-1',
+'digest-md5', 'plain', 'anonymous']`.
+
+You may enable XMPP pings by setting the `server.keepalive.interval` (time
+between ping attempts) and `server.keepalive.timeout` (timeout to close the
+connection if pong was not received); both of these are in seconds. If
+`server.keepalive` is not defined, then XMPP ping will use the default settings
+(with interval of 5 minutes).
 
 ## What's included?
 
@@ -73,3 +80,5 @@ Made a typo in a message? Using Message Correction [XEP-0308](http://xmpp.org/ex
 ### Timezone Indications
 
 Working with someone in a different timezone? If the other person is using Kaiwa or another client that supports Entity Time ([XEP-0202](http://xmpp.org/extensions/xep-0202.html)) you'll see a reminder that they're 9 hours away where it's 4am and they're not likely to respond.
+
+[stanza.io]: https://github.com/otalk/stanza.io
