@@ -36,9 +36,11 @@ module.exports = BaseCollection.extend({
                         self.get(muc.jid).join();
                     }
                 });
+
+                self.trigger('loaded');
             });
         });
-    },    
+    },
     save: function (cb) {
         var self = this;
         app.whenConnected(function () {
