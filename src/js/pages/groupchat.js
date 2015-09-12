@@ -56,7 +56,9 @@ module.exports = BasePage.extend({
         this.firstChanged = true;
         var self = this;
         $('.messages').scroll(function() {
-            if (self.firstChanged && $(".messages li:first-child").offset().top > 0) {
+            var firstMessage = $(".messages li:first-child");
+            var offset = firstMessage.offset();
+            if (self.firstChanged && offset && offset.top > 0) {
                 self.firstChanged = false;
                 self.model.fetchHistory();
             }
