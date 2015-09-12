@@ -42,8 +42,7 @@ gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
             './src/js/libraries/resampler.js',
             './src/js/libraries/IndexedDBShim.min.js',
             './src/js/libraries/sugar-1.2.1-dates.js',
-            './src/js/libraries/jquery.oembed.js',
-            './src/js/libraries/jquery-impromptu.js'
+            './src/js/libraries/jquery.oembed.js'
         ]), stream.pipe(source('app.js')).pipe(buffer()))
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js'))
