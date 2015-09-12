@@ -21,7 +21,7 @@ module.exports = HumanView.extend({
     events: {
         'click': 'handleClick',
         'click .join': 'handleJoinRoom',
-        'click .remove': 'handleDestroyRoom'
+        'click .remove': 'handleLeaveRoom'
     },
     render: function () {
         this.renderAndBind({contact: this.model});
@@ -33,22 +33,8 @@ module.exports = HumanView.extend({
     handleJoinRoom: function (e) {
         this.model.join();
     },
-    handleDestroyRoom: function (e) {
+    handleLeaveRoom: function (e) {
         var  muc = this.model;
-
-        $.prompt('Are you sure you want to remove this room: ' + muc.displayName + '?', {
-                title: 'Remove Room',
-                buttons: { "Yes": true, "Cancel": false },
-                persistent: true,
-                submit:function (e, v, m, f) {
-                    if (v) {
-                        muc.destroy(function (err) {
-                            if (err) {
-                                $.prompt(err.error.text, { title: 'Remove Room' });
-                            }
-                        });
-                    }
-                }
-        });
+	muc.leave();
     }
 });
