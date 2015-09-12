@@ -54,7 +54,10 @@ module.exports = {
 
         app.config = parseConfig(config);
         app.config.useStreamManagement = true;
-        app.config.sasl = SERVER_CONFIG.sasl;
+
+        if (SERVER_CONFIG.sasl) {
+            app.config.sasl = SERVER_CONFIG.sasl;
+        }
 
         _.extend(this, Backbone.Events);
 
