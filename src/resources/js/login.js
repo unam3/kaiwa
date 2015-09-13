@@ -1,9 +1,13 @@
-$('#loginbox form').on('submit', function (e) {
-    var jid = $('#jid').val();
+document.getElementById('login-form').addEventListener('submit', function (e) {
+    function value(id) {
+        return document.getElementById(id).value;
+    }
+
+    var jid = value('jid');
     if (SERVER_CONFIG.domain && jid.indexOf('@') == -1)
          jid += "@" + SERVER_CONFIG.domain;
-    var password = $('#password').val();
-    var connURL = SERVER_CONFIG.wss ? SERVER_CONFIG.wss : $('#connURL').val();
+    var password = value('password');
+    var connURL = SERVER_CONFIG.wss ? SERVER_CONFIG.wss : value('connURL');
 
     var transport;
     var wsURL = '';
@@ -30,5 +34,4 @@ $('#loginbox form').on('submit', function (e) {
     window.location = '/';
 
     e.preventDefault();
-    return false;
 });

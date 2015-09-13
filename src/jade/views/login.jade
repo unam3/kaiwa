@@ -7,8 +7,7 @@ block content
           | Log in
 
     .content
-
-        form
+        form#login-form
             .fieldContainer
                 label(for='username') Username
                 input(type='text', id='jid', name='jid', placeholder='you', tabindex='1', autofocus)
@@ -25,5 +24,8 @@ block scripts
     script(src="/config.js")
     script(src="/js/login.js")
     script.
-        if ("#{config.wss}".length == 0)
-            $('.fieldContainerWSS').show();
+        if ("#{config.wss}".length == 0) {
+            document.getElementsByClassName('fieldContainerWSS').forEach(function (e) {
+                e.style.display = 'block';
+            });
+        }
