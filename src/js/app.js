@@ -53,7 +53,7 @@ module.exports = {
         }
 
         app.config = parseConfig(config);
-        app.config.useStreamManagement = true;
+        app.config.useStreamManagement = false; // Temporary solution because this feature is bugged on node 4.0
 
         if (SERVER_CONFIG.sasl) {
             app.config.sasl = SERVER_CONFIG.sasl;
