@@ -1,4 +1,2 @@
-$(function () {
-    localStorage.clear();
-    window.location = '/login.html';
-});
+localStorage.clear();
+window.location = '/login.html';
