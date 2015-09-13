@@ -38,7 +38,6 @@ gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
 
     merge(gulp.src([
             './src/js/libraries/jquery.js',
-            './src/js/libraries/ui.js',
             './src/js/libraries/resampler.js',
             './src/js/libraries/IndexedDBShim.min.js',
             './src/js/libraries/sugar-1.2.1-dates.js',
