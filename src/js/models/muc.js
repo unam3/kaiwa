@@ -107,8 +107,8 @@ module.exports = HumanModel.define({
         var toMe = false;
         this.resources.forEach(function (resource) {
             if (message.body.toLowerCase().indexOf(resource.mucDisplayName) >= 0) {
-                mentions.push(resource.mucDisplayName);
                 if (resource.mucDisplayName === self.nick)
+                    mentions.push(resource.mucDisplayName);
                     toMe = true;
             }
         });
