@@ -1,7 +1,14 @@
 Kaiwa [![Build Status](https://travis-ci.org/ForNeVeR/kaiwa.svg?branch=develop)](https://travis-ci.org/ForNeVeR/kaiwa)
 =====
 Kaiwa is an open source web client for XMPP.  
-Kaiwa is a fork of Otalk, a prototype application created by &yet (https://github.com/otalk for more code).
+
+Our production server is http://chat.jabber.ru
+
+Alpha version is always hosted on http://kaiwa.fornever.me (**warning: there may
+be highly unstable code there, you're recommended to use test accounts with this
+server**).
+
+Kaiwa is a fork of [Otalk][otalk], a prototype application created by &yet.
 
 ![Screenshot](http://getkaiwa.com/assets/img/header.png)
 
@@ -81,4 +88,5 @@ Made a typo in a message? Using Message Correction [XEP-0308](http://xmpp.org/ex
 
 Working with someone in a different timezone? If the other person is using Kaiwa or another client that supports Entity Time ([XEP-0202](http://xmpp.org/extensions/xep-0202.html)) you'll see a reminder that they're 9 hours away where it's 4am and they're not likely to respond.
 
+[otalk]: https://github.com/otalk
 [stanza.io]: https://github.com/otalk/stanza.io
