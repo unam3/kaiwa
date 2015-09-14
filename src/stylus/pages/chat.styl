@@ -35,6 +35,7 @@
       white-space: nowrap
       display: inline-block
       height: 42px
+      width: 100%
 
     .prefix, .name, .user_presence, .channel_actions, .status
       display: inline-block
@@ -60,6 +61,7 @@
       padding-left: 20px
       cursor: default
       color: $topbarFg
+      float: left
 
     .user_presence, .channel_actions
       color: $gray
@@ -98,17 +100,20 @@
     .channel_actions
       opacity: 1
       font-size: 20px
+      float: left
 
     .status
       color: $gray
       font-weight: $font-weight-classic
       font-size: $font-size-h3
-      line-height: 18px
       margin-left: 15px
       white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
       transition: all .25s
+      display: block
+      line-height: 42px
+      padding-left: 7px
       allowselect()
 
       &:empty:before
