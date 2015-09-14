@@ -105,13 +105,10 @@ module.exports = HumanModel.define({
 
         var mentions = [];
         var toMe = false;
-        this.resources.forEach(function (resource) {
-            if (message.body.toLowerCase().indexOf(resource.mucDisplayName) >= 0) {
-                if (resource.mucDisplayName === self.nick)
-                    mentions.push(resource.mucDisplayName);
-                    toMe = true;
-            }
-        });
+        if (message.body.toLowerCase().indexOf(self.nick) >= 0) {
+            mentions.push(self.nick);
+            toMe = true;
+        }
         if (message.body.toLowerCase().indexOf('all: ') >= 0) {
             mentions.push('all:');
         }
