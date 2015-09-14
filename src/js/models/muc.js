@@ -106,14 +106,14 @@ module.exports = HumanModel.define({
         var mentions = [];
         var toMe = false;
         this.resources.forEach(function (resource) {
-            if (message.body.toLowerCase().indexOf('@' + resource.mucDisplayName) >= 0) {
-                mentions.push('@' + resource.mucDisplayName);
+            if (message.body.toLowerCase().indexOf(resource.mucDisplayName) >= 0) {
+                mentions.push(resource.mucDisplayName);
                 if (resource.mucDisplayName === self.nick)
                     toMe = true;
             }
         });
-        if (message.body.toLowerCase().indexOf('@all') >= 0) {
-            mentions.push('@all');
+        if (message.body.toLowerCase().indexOf('all: ') >= 0) {
+            mentions.push('all:');
         }
         message.mentions = mentions;
 
