@@ -21,10 +21,10 @@ block content
             button(type='submit', tabindex='3', class="primary") Go!
 
 block scripts
-    script(src="/config.js")
-    script(src="/js/login.js")
+    script(src="config.js")
+    script(src="js/login.js")
     script.
-        if ("#{config.wss}".length == 0) {
+        if ("#{config.server.wss}".length == 0) {
             document.getElementsByClassName('fieldContainerWSS').forEach(function (e) {
                 e.style.display = 'block';
             });

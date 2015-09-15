@@ -46,6 +46,6 @@ module.exports = Backbone.Router.extend({
             client.disconnect();
         }
         localStorage.clear();
-        window.location = '/login.html';
+        window.location = 'login.html';
     }
 });

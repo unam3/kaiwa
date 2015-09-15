@@ -48,7 +48,7 @@ module.exports = {
 
         if (!config) {
             console.log('missing config');
-            window.location = '/login.html';
+            window.location = 'login.html';
             return;
         }
 
@@ -105,8 +105,8 @@ module.exports = {
                 self.api.connect();
             },
             function (cb) {
-                app.soundManager.loadFile('/sounds/ding.wav', 'ding');
-                app.soundManager.loadFile('/sounds/threetone-alert.wav', 'threetone-alert');
+                app.soundManager.loadFile('sounds/ding.wav', 'ding');
+                app.soundManager.loadFile('sounds/threetone-alert.wav', 'threetone-alert');
                 cb();
             },
             function (cb) {

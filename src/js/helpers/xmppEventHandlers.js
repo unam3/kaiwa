@@ -91,7 +91,7 @@ module.exports = function (client, app) {
             console.error(err);
         }
         if (!app.state.hasConnected) {
-            window.location = '/login.html';
+            window.location = 'login.html';
         }
     });
 

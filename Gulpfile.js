@@ -91,19 +91,15 @@ gulp.task('jade-templates', function (cb) {
     templatizer('./src/jade/templates', './src/js/templates.js', cb);
 });
 
-gulp.task('jade-views', ['jade-views-login', 'css'], function () {
+gulp.task('jade-views', ['css'], function () {
+    var config = require('./dev_config');
     return gulp.src([
         './src/jade/views/*',
-        '!./src/jade/views/login.jade'
-    ]).pipe(jade()).pipe(gulp.dest('./public/'));
-});
-
-gulp.task('jade-views-login', ['css'], function () {
-    var config = require('./dev_config');
-    return gulp.src('./src/jade/views/login.jade')
+        '!./src/jave/views/layout.jade'
+    ])
         .pipe(jade({
             locals: {
-                config: config.server
+                config: config
             }
         }))
         .pipe(gulp.dest('./public/'));
