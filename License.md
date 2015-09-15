@@ -1,6 +1,6 @@
 The MIT License
 ===============
-Copyright (C) 2015 Friedrich von Never
+Copyright (C) 2015 jabber.ru developers
 
 Copyright (C) 2015 Digicoop
 
