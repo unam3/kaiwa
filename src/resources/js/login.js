@@ -26,7 +26,7 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
         server: jid.slice(jid.indexOf('@') + 1),
         wsURL: wsURL,
         boshURL: boshURL,
-        transport: transport,
+        transports: [transport],
         credentials: {
             password: password
         },
