@@ -91,6 +91,8 @@ module.exports = function (client, app) {
             jid: client.config.jid.bare,
             server: client.config.server,
             wsURL: client.config.wsURL,
+            transports: client.config.transports,
+            saveCredentials: client.config.saveCredentials,
             credentials: creds
         });
     });
