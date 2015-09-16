@@ -8,6 +8,7 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
          jid += "@" + SERVER_CONFIG.domain;
     var password = value('password');
     var connURL = SERVER_CONFIG.wss ? SERVER_CONFIG.wss : value('connURL');
+    var publicComputer = document.getElementById('public-computer').checked;
 
     var transport;
     var wsURL = '';
@@ -28,7 +29,8 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
         transport: transport,
         credentials: {
             password: password
-        }
+        },
+        saveCredentials: !publicComputer
     });
 
     window.location = './';
