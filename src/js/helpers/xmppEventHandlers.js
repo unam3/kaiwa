@@ -69,6 +69,10 @@ module.exports = function (client, app) {
 
     client.on('credentials:update', function (creds) {
         client.config.credentials = creds;
+        if (!client.config.saveCredentials) {
+            delete localStorage.config;
+            return;
+        }
 
         if (SERVER_CONFIG.securePasswordStorage) {
             if (creds.clientKey && creds.serverKey) {

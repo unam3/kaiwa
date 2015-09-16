@@ -17,8 +17,11 @@ block content
             .fieldContainer.fieldContainerWSS
                 label(for='wsURL') WebSocket or BOSH URL
                 input(type='text', id='connURL', name='connURL', placeholder='wss://aweso.me:5281/xmpp-websocket', tabindex='3')
+            .fieldContainer.checkbox(title='Do not remember password')
+                input(type='checkbox', id='public-computer', tabindex='4')
+                label(for='public-computer') Public computer
 
-            button(type='submit', tabindex='3', class="primary") Go!
+            button(type='submit', tabindex='5', class="primary") Go!
 
 block scripts
     script(src="config.js")
