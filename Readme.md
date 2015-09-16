@@ -64,6 +64,11 @@ connection if pong was not received); both of these are in seconds. If
 `server.keepalive` is not defined, then XMPP ping will use the default settings
 (with interval of 5 minutes).
 
+Set `server.securePasswordStorage` to `false` if you want the users to save
+their *passwords* in the browser local storage. In secure mode with SCRAM
+authentication enabled Kaiwa will try to save only salted data. The secure mode
+*will not work* with `digest-md5` authentication.
+
 ## What's included?
 
 Kaiwa comes with support for:
