@@ -85,7 +85,7 @@ module.exports = BasePage.extend({
         this.$messageList = this.$('.messages');
         this.$autoComplete = this.$('.autoComplete');
 
-        this.staydown = new StayDown(this.$messageList[0], 500);
+        this.staydown = new StayDown({target: this.$messageList[0], interval: 500});
 
         this.renderMessages();
 
