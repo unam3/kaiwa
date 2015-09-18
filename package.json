@@ -27,6 +27,7 @@
     "human-model": "2.6.2",
     "human-view": "1.8.0",
     "jade": "1.11.0",
+    "jquery": "^2.1.4",
     "jxt": "^3.0.4",
     "node-uuid": "^1.4.1",
     "notify.js": "0.0.3",
