@@ -13,6 +13,11 @@ var stylus = require('gulp-stylus');
 var templatizer = require('templatizer');
 var watch = require('gulp-watch');
 
+function getConfig() {
+    var config = fs.readFileSync('./dev_config.json');
+    return JSON.parse(config);
+}
+
 gulp.task('compile', ['resources', 'client', 'config', 'manifest']);
 
 gulp.task('watch', function () {
@@ -49,7 +54,7 @@ gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
 });
 
 gulp.task('config', function (cb) {
-    var config = require('./dev_config');
+    var config = getConfig();
     mkdirp('./public', function (error) {
         if (error) {
             cb(error);
@@ -65,7 +70,7 @@ gulp.task('config', function (cb) {
 
 gulp.task('manifest', function (cb) {
     var package = require('./package.json');
-    var config = require('./dev_config.json');
+    var config = getConfig();
 
     fs.readFile('./src/manifest/manifest.cache', 'utf-8', function (error, content) {
         if (error) {
@@ -92,7 +97,7 @@ gulp.task('jade-templates', function (cb) {
 });
 
 gulp.task('jade-views', ['css'], function () {
-    var config = require('./dev_config');
+    var config = getConfig();
     return gulp.src([
         './src/jade/views/*',
         '!./src/jave/views/layout.jade'
