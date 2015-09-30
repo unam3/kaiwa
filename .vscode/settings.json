@@ -1,0 +1,20 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+	"files.exclude": {
+		"**/.git": true,
+		"**/.DS_Store": true,
+		"**/node_modules": true,
+		"/public": true,
+		"/build": true,
+		"/typings": true,
+		"/src/js/templates.js": true
+	},
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/bower_components": true,
+		"/public": true,
+		"/build": true,
+		"/typings": true,
+		"/src/js/templates.js": true
+	}
+}
