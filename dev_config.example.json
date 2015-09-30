@@ -21,10 +21,6 @@
         "keepalive": {
             "interval": 45,
             "timeout": 15
-        },
-        "softwareVersion": {
-        	"name": "Kaiwa",
-        	"version": 1.0
         }
     }
 }

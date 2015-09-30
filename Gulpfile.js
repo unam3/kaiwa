@@ -12,6 +12,7 @@ var source = require('vinyl-source-stream');
 var stylus = require('gulp-stylus');
 var templatizer = require('templatizer');
 var watch = require('gulp-watch');
+var gitrev = require('git-rev');
 
 function getConfig() {
     var config = fs.readFileSync('./dev_config.json');
@@ -55,17 +56,22 @@ gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
 
 gulp.task('config', function (cb) {
     var config = getConfig();
-    mkdirp('./public', function (error) {
-        if (error) {
-            cb(error);
-            return;
+    gitrev.short(function (commit) {
+        config.server.softwareVersion = {
+            "name": config.server.name,
+            "version": commit
         }
-
-        fs.writeFile(
-            './public/config.js',
-            'var SERVER_CONFIG = ' + JSON.stringify(config.server) + ';',
-            cb);
-    });
+        mkdirp('./public', function (error) {
+            if (error) {
+                cb(error);
+                return;
+            }
+            fs.writeFile(
+                './public/config.js',
+                'var SERVER_CONFIG = ' + JSON.stringify(config.server) + ';',
+                cb);
+        });
+    })
 });
 
 gulp.task('manifest', function (cb) {
