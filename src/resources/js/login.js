@@ -20,6 +20,11 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
         wsURL = connURL;
         transport = 'websocket';
     }
+    
+    var softwareVersion = SERVER_CONFIG.softwareVersion;
+    if (softwareVersion) {
+        softwareVersion.os = navigator.userAgent
+    }     
 
     localStorage.config = JSON.stringify({
         jid: jid,
@@ -30,7 +35,8 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
         credentials: {
             password: password
         },
-        saveCredentials: !publicComputer
+        saveCredentials: !publicComputer,
+        softwareVersion: softwareVersion
     });
 
     window.location = './';
