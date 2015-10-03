@@ -9,7 +9,7 @@ var Contact = require('./contact');
 var MUCs = require('./mucs');
 var MUC = require('./muc');
 var ContactRequests = require('./contactRequests');
-var avatarHandler = require('../helpers/avatarHandler');
+var fetchAvatar = require('../helpers/fetchAvatar');
 var crypto = require('crypto');
 var StanzaIo = require('stanza.io');
 
@@ -107,10 +107,8 @@ module.exports = HumanModel.define({
         return this.avatar;
     },
     setAvatar: function (id, type, source) {
-        if (!this.avatar) this.avatar = avatarHandler.getGravatar('').uri;
-
         var self = this;
-        avatarHandler.fetch('', id, type, source, function (avatar) {
+        fetchAvatar('', id, type, source, function (avatar) {
             self.avatarID = avatar.id;
             self.avatar = avatar.uri;
         });

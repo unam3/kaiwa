@@ -10,7 +10,7 @@ var Resources = require('./resources');
 var Messages = require('./messages');
 var Message = require('./message');
 var logger = require('andlog');
-var avatarHandler = require('../helpers/avatarHandler');
+var fetchAvatar = require('../helpers/fetchAvatar');
 
 
 module.exports = HumanModel.define({
@@ -244,10 +244,8 @@ module.exports = HumanModel.define({
         }
     },
     setAvatar: function (id, type, source) {
-        if (!this.avatar) this.avatar = avatarHandler.getGravatar(this.jid).uri;
-
         var self = this;
-        avatarHandler.fetch(this.jid, id, type, source, function (avatar) {
+        fetchAvatar(this.jid, id, type, source, function (avatar) {
             if (source == 'vcard' && self.avatarSource == 'pubsub') return;
             self.avatarID = avatar.id;
             self.avatar = avatar.uri;
