@@ -27,7 +27,7 @@ module.exports = function (jid, id, type, source, cb) {
             if (source == 'vcard') {
                 app.api.getVCard(jid, function (err, resp) {
                     if (err) {
-                        return cb(fallback(jid));
+                        return;
                     }
 
 		            if (!resp.vCardTemp.photo) return cb(fallback(jid));
