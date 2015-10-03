@@ -251,6 +251,13 @@ module.exports = function (client, app) {
             id = info.avatars[0].id;
             type = info.avatars[0].type || 'image/png';
         }
+        
+        if (contact.type === 'muc') {
+            var resource = contact.resources.get(info.jid.full);
+            if (resource) {
+                resource.setAvatar(id, type, info.source);
+            }
+        }        
 
         if (contact.setAvatar) {
             contact.setAvatar(id, type, info.source);

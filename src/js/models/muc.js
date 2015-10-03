@@ -91,12 +91,11 @@ module.exports = HumanModel.define({
         return nickname != this.getName(jid) ? nickname : '';
     },
     getAvatar: function (jid) {
-        var avatar;
-        var xmppContact = me.getContact(jid.split('/')[1]);
-        if (xmppContact) {
-            avatar = xmppContact.avatar;
+        var resource = this.resources.get(jid);
+        if (resource) {
+            return resource.avatar;
         }
-        return avatar;
+        return "https://www.gravatar.com/avatar/00000000000000000000000000000000?s=80&d=mm"
     },
     addMessage: function (message, notify) {
         message.owner = me.jid.bare;

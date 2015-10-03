@@ -2,11 +2,15 @@
 "use strict";
 
 var HumanModel = require('human-model');
+var fetchAvatar = require('../helpers/fetchAvatar');
 
 
 module.exports = HumanModel.define({
     initialize: function () {},
     type: 'resource',
+    props: {
+        avatarID: ['string', false, '']        
+    },
     session: {
         id: ['string', true],
         status: 'string',
@@ -15,7 +19,9 @@ module.exports = HumanModel.define({
         chatState: ['string', false, 'gone'],
         idleSince: 'date',
         discoInfo: 'object',
-        timezoneOffset: 'number'
+        timezoneOffset: 'number',
+        avatar: 'string',
+        avatarSource: 'string'        
     },
     derived: {
         mucDisplayName: {
@@ -118,5 +124,15 @@ module.exports = HumanModel.define({
                 self.discoInfo = res.discoInfo;
             });
         });
-    }
+    },
+    setAvatar: function (id, type, source) {
+        var self = this;
+        fetchAvatar(this.id, id, type, source, function (avatar) {
+            if (source == 'vcard' && self.avatarSource == 'pubsub') return;
+            self.avatarID = avatar.id;
+            self.avatar = avatar.uri;
+            self.avatarSource = source;
+        });
+    },
+    
 });
