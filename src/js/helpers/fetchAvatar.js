@@ -27,7 +27,7 @@ module.exports = function (jid, id, type, source, cb) {
             if (source == 'vcard') {
                 app.api.getVCard(jid, function (err, resp) {
                     if (err) {
-                        return;
+                        return cb(fallback(jid));
                     }
 
 		            if (!resp.vCardTemp.photo) return cb(fallback(jid));
@@ -49,7 +49,7 @@ module.exports = function (jid, id, type, source, cb) {
             } else {
                 app.api.getAvatar(jid, id, function (err, resp) {
                     if (err) {
-                        return cb(fallback(jid)); 
+                        return; 
                     }
 
                     var data = resp.pubsub.retrieve.item.avatarData;
