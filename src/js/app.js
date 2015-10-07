@@ -17,6 +17,7 @@ var pushNotifications = require('./helpers/pushNotifications');
 var Notify = require('notify.js');
 var Desktop = require('./helpers/desktop');
 var AppCache = require('./helpers/cache');
+var url = require('url')
 
 var SoundEffectManager = require('sound-effect-manager');
 
@@ -131,7 +132,8 @@ module.exports = {
 
                 function start() {
                     // start our router and show the appropriate page
-                    app.history.start({pushState: true, root: '/'});
+                    var baseUrl = url.parse(SERVER_CONFIG.baseUrl); 
+                    app.history.start({pushState: false, root: baseUrl.pathname});
                     if (app.history.fragment == '' && SERVER_CONFIG.startup)
                         app.navigate(SERVER_CONFIG.startup);
                     cb();

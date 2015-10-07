@@ -61,6 +61,7 @@ gulp.task('config', function (cb) {
             "name": config.server.name,
             "version": commit
         }
+        config.server.baseUrl = config.http.baseUrl
         mkdirp('./public', function (error) {
             if (error) {
                 cb(error);
