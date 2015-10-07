@@ -1,24 +1,12 @@
 var fs = require('fs');
 var express = require('express');
-var helmet = require('helmet');
-var xssFilter = require('x-xss-protection');
 
 var config = JSON.parse(fs.readFileSync('./dev_config.json'));
 
 var app = express();
-var bodyParser = require('body-parser')
-var compression = require('compression');
 var serveStatic = require('serve-static');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(compression());
 app.use(serveStatic('./public'));
-if (!config.isDev) {
-    app.use(helmet.xframe());
-}
-app.use(xssFilter());
-app.use(helmet.noSniff());
 
 app.get('/manifest.webapp', function (req, res, next) {
     var webappManifest = fs.readFileSync('./public/manifest.webapp');
