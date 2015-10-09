@@ -29,7 +29,7 @@ module.exports = BaseCollection.extend({
             client.getBookmarks(function (err, res) {
                 if (err) return;
 
-                var mucs = res.privateStorage.bookmarks.conferences;
+                var mucs = res.privateStorage.bookmarks.conferences || [];
                 mucs.forEach(function (muc) {
                     self.add(muc);
                     if (muc.autoJoin) {
