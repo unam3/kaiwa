@@ -70,7 +70,13 @@ module.exports = {
                 app.desktop = new Desktop();
                 app.cache = new AppCache();
                 app.storage = new Storage();
-                app.storage.open(cb);
+                app.storage.open(function (success) {
+                    if (!success) {
+                        console.error('indexedDB initialization completely failed!');
+                    }
+
+                    cb();
+                });
                 app.composing = {};
                 app.timeInterval = 0;
                 app.mucInfos = [];
@@ -132,7 +138,7 @@ module.exports = {
 
                 function start() {
                     // start our router and show the appropriate page
-                    var baseUrl = url.parse(SERVER_CONFIG.baseUrl); 
+                    var baseUrl = url.parse(SERVER_CONFIG.baseUrl);
                     app.history.start({pushState: false, root: baseUrl.pathname});
                     if (app.history.fragment == '' && SERVER_CONFIG.startup)
                         app.navigate(SERVER_CONFIG.startup);
