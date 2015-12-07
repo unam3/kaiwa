@@ -1,7 +1,21 @@
 /*global $, app, me, client*/
 "use strict";
+/// <reference path="../typings/tsd.d.ts" />
 
-var _ = require('underscore');
+declare const app: any
+declare const SERVER_CONFIG: any
+declare const client: any
+declare const me: any
+declare const module: any
+declare const Buffer: any
+
+interface Storage {}
+interface StorageConstructor {
+    new(): Storage
+    prototype: Storage
+}
+
+_ = require('underscore');
 var Backbone = require('backbone');
 Backbone.$ = $;
 var async = require('async');
@@ -9,15 +23,15 @@ var StanzaIO = require('stanza.io');
 
 var AppState = require('./models/state');
 var MeModel = require('./models/me');
-var MainView = require('./views/main');
+const MainView = require('./views/main');
 var Router = require('./router');
-var Storage = require('./storage');
+var Storage: StorageConstructor = require('./storage');
 var xmppEventHandlers = require('./helpers/xmppEventHandlers');
 var pushNotifications = require('./helpers/pushNotifications');
-var Notify = require('notify.js');
+const Notify = require('notify.js');
 var Desktop = require('./helpers/desktop');
 var AppCache = require('./helpers/cache');
-var url = require('url')
+const url = require('url')
 
 var SoundEffectManager = require('sound-effect-manager');
 
@@ -44,12 +58,12 @@ module.exports = {
             return config;
         }
 
-        var self = window.app = this;
-        var config = localStorage.config;
+        var self = window['app'] = this;
+        var config = localStorage['config'];
 
         if (!config) {
             console.log('missing config');
-            window.location = 'login.html';
+            window.location = <any>'login.html';
             return;
         }
 
@@ -79,7 +93,7 @@ module.exports = {
                 app.storage.profiles.get(app.config.jid, function (err, res) {
                     if (res) {
                         profile = res;
-                        profile.jid = {full: app.config.jid, bare: app.config.jid};
+                        profile['jid'] = {full: app.config.jid, bare: app.config.jid};
                         app.config.rosterVer = res.rosterVer;
                     }
                     cb();
@@ -87,7 +101,7 @@ module.exports = {
             },
             function (cb) {
                 app.state = new AppState();
-                app.me = window.me = new MeModel(profile);
+                app.me = window['me'] = new MeModel(profile);
 
                 window.onbeforeunload = function () {
                     if (app.api.sessionStarted) {
@@ -95,7 +109,7 @@ module.exports = {
                     }
                 };
 
-                self.api = window.client = StanzaIO.createClient(app.config);
+                self.api = window['client'] = StanzaIO.createClient(app.config);
                 client.use(pushNotifications);
                 xmppEventHandlers(self.api, self);
 
@@ -187,6 +201,6 @@ module.exports = {
     }
 };
 
-$(function () {
+$(()=> {
     module.exports.launch();
 });

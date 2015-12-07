@@ -13,6 +13,7 @@ var stylus = require('gulp-stylus');
 var templatizer = require('templatizer');
 var watch = require('gulp-watch');
 var gitrev = require('git-rev');
+var webpack = require("gulp-webpack");
 
 function getConfig() {
     var config = fs.readFileSync('./dev_config.json');
@@ -38,17 +39,14 @@ gulp.task('resources', function () {
 });
 
 gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
-    var stream = browserify({
-        entries: [ './src/js/app.js' ]
-    }).bundle().on('error', cb);
-
     merge(gulp.src([
             './src/js/libraries/jquery.js',
             './src/js/libraries/resampler.js',
             './src/js/libraries/IndexedDBShim.min.js',
             './src/js/libraries/sugar-1.2.1-dates.js',
             './src/js/libraries/jquery.oembed.js'
-        ]), stream.pipe(source('app.js')).pipe(buffer()))
+        ]))
+        .pipe(webpack(require('./webpack.config.js')))
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js'))
         .on('end', cb);

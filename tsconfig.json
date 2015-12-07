@@ -1,0 +1,12 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es6",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "removeComments": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
