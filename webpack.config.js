@@ -10,8 +10,13 @@ module.exports = {
     context: path.join(__dirname, 'src', 'js'),
 
     entry: {
-        polyfill: 'babel-polyfill',
-        app: './app.ts'
+        apolyfill: 'babel-polyfill',
+        bjquery: './libraries/jquery.js',
+        cresampler: './libraries/resampler.js',
+        dIndexedDBShim: './libraries/IndexedDBShim.min.js',
+        esugar: './libraries/sugar-1.2.1-dates.js',
+        foembed: './libraries/jquery.oembed.js',
+        gapp: './app.ts'
     },
 
     output: {
@@ -22,6 +27,18 @@ module.exports = {
 
     module: {
         loaders: [
+            { 
+                test: /jquery\.js$/, 
+                loader: "expose?$!expose?jQuery"
+            },
+            {
+              test: /resampler\.js$/,
+              loader: 'imports?this=>window!exports?Resample'  
+            },
+            {
+              test: /jquery\.oembed\.js/,
+              loader: 'imports?jQuery=jquery'  
+            },
             {
                 test: /\.ts(x?)$/,
                 exclude: /(node_modules|bower_components)/,
@@ -29,7 +46,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules|bower_components|libraries)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ["es2015", "stage-0"],
@@ -53,8 +70,7 @@ module.exports = {
         fs: "empty"
     },
     externals: {
-        "jquery": "jQuery",
-        "underscore": "_"
+        jquery: 'jQuery'
     }
     
 };

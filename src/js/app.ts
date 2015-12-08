@@ -15,9 +15,10 @@ interface StorageConstructor {
     prototype: Storage
 }
 
-// var $ = require('jquery');
-// var _ = require('underscore');
+var $: JQueryStatic = require('jquery');
+var _: _.LoDashStatic = require('lodash');
 var Backbone = require('backbone');
+
 Backbone.$ = $;
 var async = require('async');
 var StanzaIO = require('stanza.io');
