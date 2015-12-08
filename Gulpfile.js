@@ -13,7 +13,8 @@ var stylus = require('gulp-stylus');
 var templatizer = require('templatizer');
 var watch = require('gulp-watch');
 var gitrev = require('git-rev');
-var webpack = require("gulp-webpack");
+var webpack = require("webpack-stream");
+var gutil = require("gulp-util");
 
 function getConfig() {
     var config = fs.readFileSync('./dev_config.json');
@@ -46,7 +47,13 @@ gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
             './src/js/libraries/sugar-1.2.1-dates.js',
             './src/js/libraries/jquery.oembed.js'
         ]))
-        .pipe(webpack(require('./webpack.config.js')))
+        .pipe(webpack(Object.assign({
+            plugins: []
+        }, require('./webpack.config.js')), null, function(err, stats) {
+            if(err) return cb(JSON.stringify(err));
+            gutil.log("[webpack]", stats.toString());
+            return stats;
+        }))
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js'))
         .on('end', cb);
@@ -74,7 +81,7 @@ gulp.task('config', function (cb) {
 });
 
 gulp.task('manifest', function (cb) {
-    var package = require('./package.json');
+    var pkg = require('./package.json');
     var config = getConfig();
 
     fs.readFile('./src/manifest/manifest.cache', 'utf-8', function (error, content) {
@@ -91,7 +98,7 @@ gulp.task('manifest', function (cb) {
 
             var manifest = content.replace(
                 '#{version}',
-                 package.version + config.isDev ? ' ' + Date.now() : '');
+                 pkg.version + config.isDev ? ' ' + Date.now() : '');
             fs.writeFile('./public/manifest.cache', manifest, cb);
         });
     });

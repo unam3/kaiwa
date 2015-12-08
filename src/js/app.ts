@@ -15,7 +15,8 @@ interface StorageConstructor {
     prototype: Storage
 }
 
-_ = require('underscore');
+// var $ = require('jquery');
+// var _ = require('underscore');
 var Backbone = require('backbone');
 Backbone.$ = $;
 var async = require('async');

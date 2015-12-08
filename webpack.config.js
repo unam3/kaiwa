@@ -4,16 +4,19 @@ module.exports = {
     debug: true,
     devtool: 'source-map',
     resolve: {
-        extensions: ['', '.ts', '.js']
+        extensions: ['', '.ts', '.js', '.json', '.jade', '.html', '.less', '.css', '.json']
     },
+    
+    context: path.join(__dirname, 'src', 'js'),
 
     entry: {
         polyfill: 'babel-polyfill',
-        app: './src/js/app.ts'
+        app: './app.ts'
     },
 
     output: {
-        filename: '[name].bundle.js',
+        path: path.join(__dirname, 'public', 'js'),
+        filename: '[name].js',
         chunkFilename: '[name].js'
     },
 
@@ -21,18 +24,37 @@ module.exports = {
         loaders: [
             {
                 test: /\.ts(x?)$/,
+                exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader!ts-loader'
             },
             {
                 test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
                 query: {
                     presets: ["es2015", "stage-0"],
                     plugins: ["transform-decorators", "syntax-decorators"]
                 }
             },
-
+            {
+                test: /\.jade$/,
+                loader: 'jade-loader'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }
         ]
+    },
+    node: {
+        Buffer: true,
+        console: true,
+        global: true,
+        fs: "empty"
+    },
+    externals: {
+        "jquery": "jQuery",
+        "underscore": "_"
     }
     
 };
