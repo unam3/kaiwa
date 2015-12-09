@@ -33,7 +33,7 @@ module.exports = {
             },
             {
               test: /resampler\.js$/,
-              loader: 'imports?this=>window!exports?Resample'  
+              loader: 'expose?Resample!imports?this=>window!exports?Resample'  
             },
             {
               test: /jquery\.oembed\.js/,
