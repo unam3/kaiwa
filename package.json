@@ -46,6 +46,7 @@
     "url": "git@github.com:digicoop/kaiwa.git"
   },
   "devDependencies": {
+    "@lukekarrys/jade-runtime": "^1.11.1",
     "browserify": "^11.1.0",
     "gulp": "^3.9.0",
     "gulp-batch": "^1.0.5",
