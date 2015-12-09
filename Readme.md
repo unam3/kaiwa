@@ -20,7 +20,6 @@ application:
     $ git clone https://github.com/ForNeVeR/kaiwa.git
     $ cd kaiwa
     $ npm install
-    $ tsd install
     $ cp dev_config.example.json dev_config.json # and edit the file
 
 After that compile the application:
