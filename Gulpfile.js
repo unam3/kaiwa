@@ -13,6 +13,8 @@ var stylus = require('gulp-stylus');
 var templatizer = require('templatizer');
 var watch = require('gulp-watch');
 var gitrev = require('git-rev');
+var webpack = require("webpack-stream");
+var gutil = require("gulp-util");
 
 function getConfig() {
     var config = fs.readFileSync('./dev_config.json');
@@ -38,17 +40,13 @@ gulp.task('resources', function () {
 });
 
 gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
-    var stream = browserify({
-        entries: [ './src/js/app.js' ]
-    }).bundle().on('error', cb);
-
-    merge(gulp.src([
-            './src/js/libraries/jquery.js',
-            './src/js/libraries/resampler.js',
-            './src/js/libraries/IndexedDBShim.min.js',
-            './src/js/libraries/sugar-1.2.1-dates.js',
-            './src/js/libraries/jquery.oembed.js'
-        ]), stream.pipe(source('app.js')).pipe(buffer()))
+    webpack(Object.assign({
+            plugins: []
+        }, require('./webpack.config.js')), null, function(err, stats) {
+            if(err) return cb(JSON.stringify(err));
+            gutil.log("[webpack]", stats.toString());
+            return stats;
+        })
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js'))
         .on('end', cb);
@@ -76,7 +74,7 @@ gulp.task('config', function (cb) {
 });
 
 gulp.task('manifest', function (cb) {
-    var package = require('./package.json');
+    var pkg = require('./package.json');
     var config = getConfig();
 
     fs.readFile('./src/manifest/manifest.cache', 'utf-8', function (error, content) {
@@ -93,7 +91,7 @@ gulp.task('manifest', function (cb) {
 
             var manifest = content.replace(
                 '#{version}',
-                 package.version + config.isDev ? ' ' + Date.now() : '');
+                 pkg.version + config.isDev ? ' ' + Date.now() : '');
             fs.writeFile('./public/manifest.cache', manifest, cb);
         });
     });
