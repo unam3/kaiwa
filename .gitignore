@@ -5,3 +5,5 @@
 /public/
 /typings/
 /dev_config.json
+
+*.log
