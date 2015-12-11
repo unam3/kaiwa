@@ -92,7 +92,7 @@ module.exports = HumanModel.define({
     },
     getAvatar: function (jid) {
         var resource = this.resources.get(jid);
-        if (resource) {
+        if (resource && resource.avatar) {
             return resource.avatar;
         }
         return "https://www.gravatar.com/avatar/00000000000000000000000000000000?s=80&d=mm"
