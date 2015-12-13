@@ -47,7 +47,6 @@ gulp.task('client', ['jade-templates', 'jade-views'], function (cb) {
             gutil.log("[webpack]", stats.toString());
             return stats;
         })
-        .pipe(concat('app.js'))
         .pipe(gulp.dest('./public/js'))
         .on('end', cb);
 });

@@ -2,7 +2,7 @@ var path = require('path')
 
 module.exports = {
     debug: true,
-    devtool: 'source-map',
+    devtool: 'cheap-source-map',
     resolve: {
         extensions: ['', '.ts', '.js', '.json', '.jade', '.html', '.less', '.css', '.json']
     },
@@ -10,19 +10,27 @@ module.exports = {
     context: path.join(__dirname, 'src', 'js'),
 
     entry: {
-        apolyfill: 'babel-polyfill',
-        bjquery: './libraries/jquery.js',
-        cresampler: './libraries/resampler.js',
-        dIndexedDBShim: './libraries/IndexedDBShim.min.js',
-        esugar: './libraries/sugar-1.2.1-dates.js',
-        foembed: './libraries/jquery.oembed.js',
-        gapp: './app.ts'
+        "0-babel-polyfill": 'babel-polyfill',
+        "1-vendor": 
+        [
+            './libraries/jquery.js',
+            './libraries/resampler.js',
+            './libraries/IndexedDBShim.min.js',
+            './libraries/sugar-1.2.1-dates.js',
+            './libraries/jquery.oembed.js'
+        ],
+        "app": "./app.ts"
     },
 
     output: {
         path: path.join(__dirname, 'public', 'js'),
         filename: '[name].js',
         chunkFilename: '[name].js'
+    },
+    
+    stats: {
+        colors: true,
+        reasons: true
     },
 
     module: {
@@ -41,17 +49,13 @@ module.exports = {
             },
             {
                 test: /\.ts(x?)$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader!ts-loader'
+                exclude: /(node_modules|bower_components|libraries)/,
+                loader: 'babel!ts-loader'
             },
             {
-                test: /\.js$/,
+                test: /\.js(x?)$/,
                 exclude: /(node_modules|bower_components|libraries)/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ["es2015", "stage-0"],
-                    plugins: ["transform-decorators", "syntax-decorators"]
-                }
+                loader: 'babel'
             },
             {
                 test: /\.jade$/,

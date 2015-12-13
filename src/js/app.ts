@@ -18,7 +18,7 @@ var _: _.LoDashStatic = require('lodash')
 var Backbone = require('backbone')
 
 Backbone.$ = $
-var async = require('async')
+const asyncjs: Async = require('async')
 var StanzaIO = require('stanza.io')
 
 var AppState = require('./models/state')
@@ -74,7 +74,7 @@ class App {
         _.extend(this, Backbone.Events)
 
         var profile = {}
-        async.series([
+        asyncjs.series([
             function (cb) {
                 app.notifications = new Notify()
                 app.soundManager = new SoundEffectManager()
