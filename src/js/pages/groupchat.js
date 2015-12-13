@@ -337,11 +337,16 @@ module.exports = BasePage.extend({
         }
     },
     clickMembersToggle: function (e) {
-        var roster = $('.groupRoster');
-        if (roster.css('visibility') == 'hidden')
+        var roster = $('.groupRoster'); // TODO: check for active roster not for any
+        var pages = roster.closest('.page');
+        var toggleVisible = roster.css('visibility') == 'hidden'
+        
+        if (toggleVisible)
             roster.css('visibility', 'visible');
         else
             roster.css('visibility', 'hidden');
+            
+        pages.toggleClass('visibleGroupRoster', toggleVisible);   
     },
     appendModel: function (model, preload) {
         var newEl, first, last;
