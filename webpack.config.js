@@ -49,21 +49,13 @@ module.exports = {
             },
             {
                 test: /\.ts(x?)$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: /(node_modules|bower_components|libraries)/,
                 loader: 'babel!ts-loader'
             },
             {
-                test: /\.js$/,
+                test: /\.js(x?)$/,
                 exclude: /(node_modules|bower_components|libraries)/,
-                loader: 'babel',
-                query: {
-                    presets: ["es2015", "stage-0", "stage-1"],
-                    plugins: [
-                        "transform-decorators", 
-                        "syntax-decorators",
-                        "transform-runtime",
-                        "transform-es2015-block-scoping"]
-                }
+                loader: 'babel'
             },
             {
                 test: /\.jade$/,
