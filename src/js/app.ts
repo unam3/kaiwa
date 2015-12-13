@@ -1,10 +1,11 @@
 /// <reference path="../../typings/tsd.d.ts" />
 'use strict';
+
+global.Buffer = global.Buffer || require('buffer').Buffer;
+
 declare const SERVER_CONFIG: any
 declare const client: any
 declare const me: any
-declare const module: any
-declare const Buffer: any
 
 interface Storage {}
 interface StorageConstructor {
