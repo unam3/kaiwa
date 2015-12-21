@@ -6,14 +6,6 @@
   borderbox()
   overflow-y: auto
   overflow-x: hidden
-  
-  &.visibleGroupRoster
-    .chatBox, .messages, #members_toggle
-      right $group-roster-width
-      
-    .messages
-      left 0
-      padding-right $group-roster-width
 
 .conversation
   padding: 0px
@@ -33,7 +25,7 @@
     right: 0px
     left: 230px
     right: 200px
-    height: $conversation-header-height
+    height: 42px
     z-index: 101
 
     .title
@@ -42,7 +34,7 @@
       top: 0px
       white-space: nowrap
       display: inline-block
-      height: $conversation-header-height
+      height: 42px
       width: 100%
 
     .prefix, .name, .user_presence, .channel_actions, .status
@@ -52,7 +44,7 @@
       text-rendering: optimizelegibility
       top: 0px
       vertical-align: middle
-      line-height: $conversation-header-height
+      line-height: 42px
 
     .prefix
       color: $gray
@@ -120,7 +112,7 @@
       text-overflow: ellipsis
       transition: all .25s
       display: block
-      line-height: $conversation-header-height
+      line-height: 42px
       padding-left: 7px
       allowselect()
 
@@ -472,6 +464,7 @@
       word-break: break-word
       margin: 0
       padding: 0
+      white-space: pre-wrap
 
       .mention
         color: $pink
@@ -519,19 +512,19 @@
       margin-left: 5px
 
   .groupRoster
-    top: $conversation-header-height 
-    width: $group-roster-width
+    width: 150px
     margin: 0px
     padding: 0px
     overflow-y: auto
     overflow-x: hidden
     position: absolute
-    bottom: 0
-    
-    right: 0
+    bottom: 80px
+    right: 20px
     borderbox()
+    box-shadow: 0px 2px 10px rgba(64, 54, 63, 0.25)
     -webkit-overflow-scrolling: touch
-    border-left: 2px solid #ddd
+    border: 1px solid #ddd
+    border-radius: 0.25rem
     background-color: #fff
     z-index: 100
     visibility: hidden
