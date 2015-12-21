@@ -18,11 +18,7 @@ var parseLinks = (function(){var k="[a-z\\d.-]+://",h="(?:(?:[0-9]|[1-9]\\d|1\\d
 module.exports = {
     toHTML: function (msg, team) {
         var html = this.escapeHTML(msg);
-        html = html.replace(/\n/g, '<br>');
-        html = html.replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
-        html = html.replace(/ {2}/g, '&nbsp;&nbsp;');
-        html = this.linkify(html);
-        return html;
+        return this.linkify(html);
     },
     linkify: function (text) {
         return parseLinks(text, {
