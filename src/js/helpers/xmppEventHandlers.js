@@ -37,8 +37,8 @@ var discoCapsQueue = async.queue(function (pres, cb) {
         }
         log.info('getting info for ' + caps.ver + ' from ' + jid);
         client.getDiscoInfo(jid, caps.node + '#' + caps.ver, function (err, result) {
-            if (err) {
-                log.error('Couldnt get info for ' + caps.ver);
+            if (err || !result.discoInfo.features) {
+                log.info('Couldnt get info for ' + caps.ver);
                 return cb();
             }
             if (client.verifyVerString(result.discoInfo, caps.hash, caps.ver)) {
