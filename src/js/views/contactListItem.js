@@ -38,6 +38,12 @@ module.exports = HumanView.extend({
         }
     },
     handleRemoveContact: function() {
+        var question = "Remove "
+            + (this.model.name ?
+                (this.model.name + " (" +  this.model.jid + ")")
+                    : this.model.jid)
+            + " from contact list?";
+        if(!confirm(question)) return;
         me.removeContact(this.model.jid);
         if (app.history.fragment === 'chat/' + encodeURIComponent(this.model.jid)) {
             app.navigate('/');
