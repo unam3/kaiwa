@@ -13,10 +13,10 @@ module.exports = {
         "0-babel-polyfill": 'babel-polyfill',
         "1-vendor": 
         [
-            './libraries/jquery.js',
+            require.resolve('jquery'),
             './libraries/resampler.js',
-            './libraries/IndexedDBShim.min.js',
-            './libraries/sugar-1.2.1-dates.js',
+            require.resolve('indexeddbshim'),
+            require.resolve('sugar-date'),
             './libraries/jquery.oembed.js'
         ],
         "app": "./app.ts"
@@ -36,7 +36,7 @@ module.exports = {
     module: {
         loaders: [
             { 
-                test: /jquery\.js$/, 
+                test: require.resolve('jquery'),
                 loader: "expose?$!expose?jQuery"
             },
             {
@@ -44,7 +44,7 @@ module.exports = {
               loader: 'expose?Resample!imports?this=>window!exports?Resample'  
             },
             {
-              test: /jquery\.oembed\.js/,
+              test: /jquery\.oembed\.js$/,
               loader: 'imports?jQuery=jquery'  
             },
             {

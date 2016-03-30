@@ -26,8 +26,9 @@
     "git-rev": "^0.2.1",
     "human-model": "2.6.2",
     "human-view": "1.8.0",
+    "indexeddbshim": "^2.2.1",
     "jade": "1.11.0",
-    "jquery": "^2.1.4",
+    "jquery": "^2.2.2",
     "json-loader": "^0.5.4",
     "node-uuid": "^1.4.1",
     "notify.js": "0.0.3",
@@ -36,6 +37,7 @@
     "sound-effect-manager": "1.0.1",
     "stanza.io": "^8.0.0",
     "staydown": "1.2.4",
+    "sugar-date": "^1.5.1",
     "templatizer": "^2.0.2",
     "underscore": "1.8.3",
     "wildemitter": "^1.0.1"
