@@ -47,7 +47,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:digicoop/kaiwa.git"
+    "url": "git@github.com:ForNeVeR/kaiwa.git"
   },
   "devDependencies": {
     "async": "^1.4.2",
