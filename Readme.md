@@ -69,6 +69,11 @@ their *passwords* in the browser local storage. In secure mode with SCRAM
 authentication enabled Kaiwa will try to save only salted data. The secure mode
 *will not work* with `digest-md5` authentication.
 
+## Troubleshooting
+
+Feel free to [report an issue][issues] or contact the maintainer directly
+through [email][fornever-email] or [XMPP][fornever-xmpp].
+
 ## What's included?
 
 Kaiwa comes with support for:
@@ -93,5 +98,8 @@ Made a typo in a message? Using Message Correction [XEP-0308](http://xmpp.org/ex
 
 Working with someone in a different timezone? If the other person is using Kaiwa or another client that supports Entity Time ([XEP-0202](http://xmpp.org/extensions/xep-0202.html)) you'll see a reminder that they're 9 hours away where it's 4am and they're not likely to respond.
 
+[fornever-email]: mailto:friedrich@fornever.me
+[fornever-xmpp]: xmpp:fornever@codingteam.org.ru
+[issues]: https://github.com/ForNeVeR/kaiwa/issues
 [otalk]: https://github.com/otalk
 [stanza.io]: https://github.com/otalk/stanza.io
