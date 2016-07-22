@@ -1,7 +1,7 @@
 {
   "name": "kaiwa.im",
   "description": "Kaiwa: XMPP Client in the Browser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "browser": {
     "crypto": "crypto-browserify"
   },
