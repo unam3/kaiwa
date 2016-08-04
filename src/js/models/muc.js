@@ -44,7 +44,7 @@ module.exports = HumanModel.define({
             deps: ['name', 'jid'],
             fn: function () {
                 var disp = this.name;
-                if (!disp) disp = this.jid.jid;
+                if (!disp) disp = this.jid.bare;
                 return disp.split('@')[0];
             }
         },
