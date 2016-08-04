@@ -35,7 +35,7 @@
     "semi-static": "1.0.0",
     "serve-static": "1.10.0",
     "sound-effect-manager": "1.0.1",
-    "stanza.io": "^8.0.0",
+    "stanza.io": "^8.0.1",
     "staydown": "1.2.4",
     "sugar-date": "^1.5.1",
     "templatizer": "^2.0.2",
